@@ -1,0 +1,1 @@
+I'm going to make a project its like managing infrastructure, while hosting my own website, making my own password manager and gonna access it from all around the world with proper tools, alsow going to monitor the hosting and status via monitoring tools.
