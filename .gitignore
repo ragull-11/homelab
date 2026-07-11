@@ -1,3 +1,5 @@
 .cloudflared/
 monitoring/.env
 **/.env
+**/.env
+monitoring/.env
