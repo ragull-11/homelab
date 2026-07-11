@@ -1,0 +1,15 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    networks:
+      - homelab
+    volumes:
+      - ./config:/app/config
+    ports:
+      - "3003:3000"
+
+networks:
+  homelab:
+    external: true
