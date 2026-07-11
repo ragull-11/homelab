@@ -11,8 +11,8 @@ route:
 receivers:
   - name: telegram
     telegram_configs:
-      - bot_token: "REDACTED_TOKEN"
-        chat_id: 991270765
+      - bot_token: "${TELEGRAM_BOT_TOKEN}"
+        chat_id: ${TELEGRAM_CHAT_ID}
         message: |
           🚨 *{{ .GroupLabels.alertname }}*
           {{ range .Alerts }}
