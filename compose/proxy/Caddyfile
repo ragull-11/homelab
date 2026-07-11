@@ -1,3 +1,5 @@
 :80 {
-    respond "Caddy is running" 200
+    root * /srv/site
+    file_server
+    encode gzip
 }

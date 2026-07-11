@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragul R — DevOps & Infrastructure</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a0e1a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAV */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid #1e2d4a;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #60a5fa;
+            letter-spacing: 0.5px;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #60a5fa; }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid #1e2d4a;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: #1e3a5f;
+            color: #60a5fa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 span { color: #60a5fa; }
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 580px;
+            margin-bottom: 32px;
+        }
+        .hero-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-secondary {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid #334155;
+        }
+        .btn-secondary:hover { border-color: #60a5fa; color: #60a5fa; }
+
+        /* SECTIONS */
+        section { padding: 60px 0; border-bottom: 1px solid #1e2d4a; }
+        section:last-child { border-bottom: none; }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #60a5fa;
+            margin-bottom: 12px;
+        }
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
+        .section-desc {
+            color: #64748b;
+            margin-bottom: 36px;
+            font-size: 0.95rem;
+        }
+
+        /* PROJECT CARD */
+        .project-card {
+            background: #0f172a;
+            border: 1px solid #1e2d4a;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        .project-card:hover { border-color: #2563eb; }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .project-badge {
+            background: #1a3a1a;
+            color: #4ade80;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .project-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .project-points {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .project-points li {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .project-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tech-tag {
+            background: #1e2d4a;
+            color: #7dd3fc;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .skill-group {
+            background: #0f172a;
+            border: 1px solid #1e2d4a;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .skill-group h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .skill-group ul {
+            list-style: none;
+        }
+        .skill-group ul li {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            padding: 3px 0;
+        }
+
+        /* ABOUT */
+        .about-text {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            max-width: 680px;
+            margin-bottom: 16px;
+        }
+        .hosted-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0f172a;
+            border: 1px solid #1e2d4a;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 8px;
+        }
+        .hosted-note .dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* CONTACT */
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: #334155;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="logo">ragul.cloud</div>
+        <div class="nav-links">
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-tag">Open to DevOps / SRE / Linux roles</div>
+        <h1>Hi, I'm <span>Ragul R</span></h1>
+        <p>I build and operate infrastructure — self-hosted services, container
+           orchestration, observability stacks, and infrastructure as code.
+           This site runs on a Raspberry Pi in my home, served through a
+           Cloudflare Tunnel.</p>
+        <div class="hero-links">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="https://github.com/ragulll112002" class="btn btn-secondary"
+               target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/ragul11" class="btn btn-secondary"
+               target="_blank">LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">Work</div>
+        <h2>Projects</h2>
+        <p class="section-desc">Real infrastructure I've built and operate.</p>
+
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-title">Self-Hosted Homelab & Observability Platform</div>
+                <div class="project-badge">● Live</div>
+            </div>
+            <p class="project-desc">
+                A production-grade homelab running on a Raspberry Pi 4 (Ubuntu Server) —
+                fully managed as code, monitored, and recoverable from a bare OS in one
+                command. This website is served from it.
+            </p>
+            <ul class="project-points">
+                <li>8 containerised services behind a Caddy reverse proxy, accessed privately over a WireGuard VPN (Tailscale) — no ports open on the router</li>
+                <li>Public portfolio site exposed via Cloudflare Tunnel — no home IP exposure, works behind CGNAT</li>
+                <li>Full observability: Prometheus + Grafana (metrics), Loki + Promtail (logs), Alertmanager (alerts to phone), Uptime Kuma (uptime)</li>
+                <li>Entire stack managed as code with Ansible — reproducible from bare OS; GitHub Actions CI validates every change</li>
+                <li>Automated backups with restic and a tested disaster-recovery runbook</li>
+                <li>Self-hosted Git (Gitea) mirrors configs to GitHub; self-hosted password manager (Vaultwarden)</li>
+            </ul>
+            <div class="tech-tags">
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Caddy</span>
+                <span class="tech-tag">Tailscale</span>
+                <span class="tech-tag">Cloudflare Tunnel</span>
+                <span class="tech-tag">Prometheus</span>
+                <span class="tech-tag">Grafana</span>
+                <span class="tech-tag">Loki</span>
+                <span class="tech-tag">Alertmanager</span>
+                <span class="tech-tag">Ansible</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">restic</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-label">Toolkit</div>
+        <h2>Skills</h2>
+        <p class="section-desc">Tools and technologies I work with.</p>
+        <div class="skills-grid">
+            <div class="skill-group">
+                <h3>Operating Systems</h3>
+                <ul>
+                    <li>Linux (Ubuntu Server)</li>
+                    <li>CLI, process management</li>
+                    <li>systemd, UFW, SSH hardening</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>Containers</h3>
+                <ul>
+                    <li>Docker & Docker Compose</li>
+                    <li>Container networking</li>
+                    <li>Reverse proxy (Caddy)</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>Observability</h3>
+                <ul>
+                    <li>Prometheus & Grafana</li>
+                    <li>Loki (log aggregation)</li>
+                    <li>Alertmanager</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>Networking & Security</h3>
+                <ul>
+                    <li>Tailscale (WireGuard VPN)</li>
+                    <li>Cloudflare (DNS, Tunnel)</li>
+                    <li>DNS, UFW firewall</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>IaC & CI/CD</h3>
+                <ul>
+                    <li>Ansible</li>
+                    <li>GitHub Actions</li>
+                    <li>Git (Gitea + GitHub)</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h3>Cloud</h3>
+                <ul>
+                    <li>AWS (EC2, S3, IAM)</li>
+                    <li>Terraform</li>
+                    <li>Cloudflare</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-label">Background</div>
+        <h2>About</h2>
+        <p class="about-text">
+            B.Tech EEE graduate (SASTRA University, 2023) working toward a
+            career in DevOps, SRE, and Platform Engineering. I learn by
+            building — the homelab above is my main project, built from
+            scratch to understand how real infrastructure is designed,
+            operated, and recovered.
+        </p>
+        <p class="about-text">
+            I'm currently open to entry-level and junior roles in DevOps,
+            SRE, Linux administration, and platform engineering across India.
+        </p>
+        <div class="hosted-note">
+            <span class="dot"></span>
+            This site is self-hosted on a Raspberry Pi 4 running Ubuntu Server,
+            served via Cloudflare Tunnel
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-label">Get in touch</div>
+        <h2>Contact</h2>
+        <p class="section-desc">Open to opportunities and conversations.</p>
+        <div class="contact-links">
+            <a href="mailto:ragulll112002@gmail.com" class="btn btn-primary">
+                ragulll112002@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/ragul11" class="btn btn-secondary"
+               target="_blank">LinkedIn</a>
+            <a href="https://github.com/ragulll112002" class="btn btn-secondary"
+               target="_blank">GitHub</a>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="container">
+        Ragul R · ragul.cloud · Self-hosted on Raspberry Pi 4
+    </div>
+</footer>
+
+</body>
+</html>
