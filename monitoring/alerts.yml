@@ -1,0 +1,38 @@
+groups:
+  - name: homelab
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "{{ $labels.job }} has been unreachable for 2 minutes"
+
+      - alert: DiskAlmostFull
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Disk almost full"
+          description: "Less than 20% disk space remaining on /"
+
+      - alert: HighMemory
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memory pressure high"
+          description: "Memory usage above 85%"
+
+      - alert: HighCPUTemp
+        expr: node_hwmon_temp_celsius > 75
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Pi running hot"
+          description: "CPU temperature above 75°C"
