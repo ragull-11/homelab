@@ -1,0 +1,32 @@
+---
+- name: Check if Docker is already installed
+  command: docker --version
+  register: docker_installed
+  ignore_errors: yes
+
+- name: Download Docker install script
+  get_url:
+    url: https://get.docker.com
+    dest: /tmp/get-docker.sh
+    mode: "0755"
+  when: docker_installed.failed
+
+- name: Install Docker
+  command: sh /tmp/get-docker.sh
+  when: docker_installed.failed
+
+- name: Add user to docker group
+  user:
+    name: ragul
+    groups: docker
+    append: yes
+
+- name: Ensure Docker service is enabled and running
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Create homelab Docker network
+  command: docker network create homelab
+  ignore_errors: yes

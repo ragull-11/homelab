@@ -1,0 +1,22 @@
+---
+- name: Configure homelab
+  hosts: homelab
+  become: yes
+
+  roles:
+    - base
+    - docker
+    - tailscale
+    - services
+    - cloudflared
+    - monitoring
+
+  post_tasks:
+    - name: Show running containers
+      command: docker ps
+      register: containers
+      become_user: ragul
+
+    - name: Print container status
+      debug:
+        msg: "{{ containers.stdout_lines }}"
