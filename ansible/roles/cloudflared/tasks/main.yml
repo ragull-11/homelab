@@ -1,0 +1,25 @@
+---
+- name: Check if cloudflared is installed
+  command: cloudflared --version
+  register: cloudflared_installed
+  ignore_errors: yes
+
+- name: Download cloudflared binary
+  get_url:
+    url: https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64
+    dest: /usr/local/bin/cloudflared
+    mode: "0755"
+  when: cloudflared_installed.failed
+
+- name: Ensure cloudflared config directory exists
+  file:
+    path: /etc/cloudflared
+    state: directory
+    mode: "0755"
+
+- name: Ensure cloudflared service is running
+  service:
+    name: cloudflared
+    state: started
+    enabled: yes
+  ignore_errors: yes

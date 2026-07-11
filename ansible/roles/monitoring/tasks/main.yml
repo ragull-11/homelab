@@ -1,0 +1,13 @@
+---
+- name: Create monitoring directory
+  file:
+    path: /home/ragul/homelab/monitoring
+    state: directory
+    owner: ragul
+    group: ragul
+
+- name: Start monitoring stack
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/monitoring
+    state: present
+  become_user: ragul

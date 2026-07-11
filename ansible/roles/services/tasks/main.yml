@@ -1,0 +1,50 @@
+---
+- name: Create compose directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: ragul
+    group: ragul
+  loop:
+    - /home/ragul/homelab/compose/adguard
+    - /home/ragul/homelab/compose/proxy
+    - /home/ragul/homelab/compose/gitea
+    - /home/ragul/homelab/compose/vaultwarden
+    - /home/ragul/homelab/compose/homepage/config
+    - /home/ragul/homelab/compose/uptime-kuma
+
+- name: Start AdGuard Home
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/compose/adguard
+    state: present
+  become_user: ragul
+
+- name: Start Caddy
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/compose/proxy
+    state: present
+  become_user: ragul
+
+- name: Start Gitea
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/compose/gitea
+    state: present
+  become_user: ragul
+
+- name: Start Vaultwarden
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/compose/vaultwarden
+    state: present
+  become_user: ragul
+
+- name: Start Homepage
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/compose/homepage
+    state: present
+  become_user: ragul
+
+- name: Start Uptime Kuma
+  community.docker.docker_compose_v2:
+    project_src: /home/ragul/homelab/compose/uptime-kuma
+    state: present
+  become_user: ragul

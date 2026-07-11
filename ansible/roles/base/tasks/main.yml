@@ -1,0 +1,101 @@
+---
+- name: Set hostname
+  hostname:
+    name: homelab
+
+- name: Set timezone
+  timezone:
+    name: Asia/Kolkata
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Upgrade all packages
+  apt:
+    upgrade: dist
+
+- name: Install required packages
+  apt:
+    name:
+      - git
+      - curl
+      - unattended-upgrades
+      - ufw
+    state: present
+
+- name: Enable unattended-upgrades
+  debconf:
+    name: unattended-upgrades
+    question: unattended-upgrades/enable_auto_updates
+    value: "true"
+    vtype: boolean
+
+- name: Set UFW default deny incoming
+  ufw:
+    default: deny
+    direction: incoming
+
+- name: Set UFW default allow outgoing
+  ufw:
+    default: allow
+    direction: outgoing
+
+- name: Allow SSH through UFW
+  ufw:
+    rule: allow
+    port: "22"
+    proto: tcp
+
+- name: Allow Tailscale through UFW
+  ufw:
+    rule: allow
+    interface: tailscale0
+    direction: in
+
+- name: Allow service ports through UFW
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - "53"
+    - "80"
+    - "443"
+    - "3000"
+    - "3001"
+    - "3002"
+    - "3003"
+    - "3004"
+    - "3005"
+    - "9090"
+    - "9093"
+    - "3100"
+    - "2222"
+
+- name: Allow DNS UDP
+  ufw:
+    rule: allow
+    port: "53"
+    proto: udp
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+
+- name: Disable SSH password authentication
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+  notify: restart ssh
+
+- name: Disable SSH root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"
+    state: present
+  notify: restart ssh
