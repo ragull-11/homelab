@@ -3,3 +3,4 @@ monitoring/.env
 **/.env
 **/.env
 monitoring/.env
+monitoring/alertmanager.yml
