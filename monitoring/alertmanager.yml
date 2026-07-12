@@ -12,7 +12,7 @@ receivers:
   - name: telegram
     telegram_configs:
       - bot_token_file: /etc/alertmanager/telegram_bot_token
-        chat_id: ${TELEGRAM_CHAT_ID}
+        chat_id: 991270765
         message: |
           🚨 *{{ .GroupLabels.alertname }}*
           {{ range .Alerts }}
