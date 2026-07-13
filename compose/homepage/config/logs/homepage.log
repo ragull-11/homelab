@@ -207,3 +207,81 @@
 [2026-07-13T14:46:29.162Z] info: widgets.yaml was copied to the config folder
 [2026-07-13T14:46:29.165Z] info: custom.css was copied to the config folder
 [2026-07-13T14:46:29.167Z] info: custom.js was copied to the config folder
+[2026-07-13T14:56:31.529Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:31.846Z] error: expected a single document in the stream, but found more
+[2026-07-13T14:56:32.553Z] error: <index> YAMLException: expected a single document in the stream, but found more
+    at Object.load$1 [as load] (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2818:9)
+    at n (/app/.next/server/pages/index.js:8:23975)
+    at async K (/app/.next/server/pages/index.js:2:51417)
+    at async rv (/app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:13:2961)
+    at async o (/app/.next/server/chunks/1207.js:1:17593)
+    at async ti.handleRevalidate (/app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:1:55675)
+    at async /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:1:41726
+[2026-07-13T14:56:33.394Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:33.567Z] error: expected a single document in the stream, but found more
+[2026-07-13T14:56:34.928Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:35.062Z] error: expected a single document in the stream, but found more
+[2026-07-13T14:56:36.071Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:36.418Z] error: expected a single document in the stream, but found more
+[2026-07-13T14:56:37.520Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:37.600Z] error: expected a single document in the stream, but found more
+[2026-07-13T14:56:38.371Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:38.461Z] error: expected a single document in the stream, but found more
+[2026-07-13T14:56:39.427Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'expected a single document in the stream, but found more',
+    mark: undefined,
+    message: 'expected a single document in the stream, but found more',
+    config: 'bookmarks.yaml'
+  }
+]
+[2026-07-13T14:56:39.522Z] error: expected a single document in the stream, but found more
