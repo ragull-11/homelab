@@ -1,0 +1,42 @@
+- Core Services:
+    - AdGuard Home:
+        href: http://100.126.235.13:3000
+        description: Network-wide DNS & ad blocking
+        icon: adguard-home.png
+
+    - Gitea:
+        href: http://100.126.235.13:3001
+        description: Self-hosted Git server
+        icon: gitea.png
+
+    - Vaultwarden:
+        href: http://100.126.235.13:3002
+        description: Password manager
+        icon: vaultwarden.png
+
+    - Uptime Kuma:
+        href: http://100.126.235.13:3004
+        description: Uptime monitoring
+        icon: uptime-kuma.png
+
+- Observability:
+    - Grafana:
+        href: http://100.126.235.13:3005
+        description: Dashboards & metrics
+        icon: grafana.png
+
+    - Prometheus:
+        href: http://100.126.235.13:9090
+        description: Metrics collection
+        icon: prometheus.png
+
+    - Alertmanager:
+        href: http://100.126.235.13:9093
+        description: Alert routing
+        icon: alertmanager.png
+
+- Public:
+    - ragul.cloud:
+        href: https://ragul.cloud
+        description: Live portfolio site
+        icon: si-cloudflare.png
