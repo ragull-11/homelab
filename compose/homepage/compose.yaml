@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     networks:
       - homelab
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=100.126.235.13:3003,localhost:3003
     volumes:
       - ./config:/app/config
     ports:
