@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ragul R — Infrastructure & DevOps</title>
-<meta name="description" content="Aspiring Cloud & DevOps engineer. I run a small, monitored, self-hosted homelab to learn how production systems are built, secured, and operated." />
+<title>Ragul R — Cloud & DevOps</title>
+<meta name="description" content="Aspiring Cloud & DevOps engineer. I learn by building — self-hosted infrastructure, Linux, automation, and cloud fundamentals." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -28,25 +28,16 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--bg); color: var(--text);
     font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility; overflow-x: hidden;
   }
-
   ::selection { background: rgba(63, 191, 169, 0.25); color: #fff; }
-
   a { color: inherit; text-decoration: none; }
-
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-
   .mono { font-family: 'JetBrains Mono', monospace; }
 
   /* ── NAV ── */
@@ -56,38 +47,24 @@
     background: rgba(10, 12, 12, 0.72);
     border-bottom: 1px solid var(--border);
   }
-  nav .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 62px;
-  }
-  .brand {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.92rem; font-weight: 500;
-    color: var(--text); letter-spacing: -0.2px;
-  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { font-family: 'JetBrains Mono', monospace; font-size: 0.92rem; font-weight: 500; letter-spacing: -0.2px; }
   .brand .dot { color: var(--accent); }
   .nav-links { display: flex; gap: 26px; }
-  .nav-links a {
-    font-size: 0.86rem; color: var(--text-muted);
-    transition: color 0.18s ease;
-  }
+  .nav-links a { font-size: 0.86rem; color: var(--text-muted); transition: color 0.18s ease; }
   .nav-links a:hover { color: var(--text); }
-  @media (max-width: 640px) { .nav-links { display: none; } }
+  @media (max-width: 700px) { .nav-links { display: none; } }
 
   /* ── HERO ── */
-  header { padding: 120px 0 90px; position: relative; }
+  header { padding: 110px 0 80px; }
   .status-line {
     display: inline-flex; align-items: center; gap: 9px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.76rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-muted);
     border: 1px solid var(--border); border-radius: 100px;
-    padding: 6px 14px; margin-bottom: 30px;
-    background: var(--surface);
+    padding: 6px 14px; margin-bottom: 28px; background: var(--surface);
   }
   .status-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 0 rgba(63, 191, 169, 0.5);
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
     animation: pulse 2.6s infinite;
   }
   @keyframes pulse {
@@ -97,22 +74,16 @@
   }
   h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.1rem, 5.5vw, 3.35rem);
-    font-weight: 600; line-height: 1.1;
-    letter-spacing: -1.2px; color: var(--text);
-    max-width: 720px; margin-bottom: 26px;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 600; line-height: 1.14; letter-spacing: -1.1px;
+    max-width: 700px; margin-bottom: 22px;
   }
   h1 .hl { color: var(--accent); }
-  .lede {
-    font-size: 1.1rem; color: var(--text-muted);
-    max-width: 600px; margin-bottom: 38px;
-  }
+  .lede { font-size: 1.08rem; color: var(--text-muted); max-width: 580px; margin-bottom: 34px; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
-    font-size: 0.9rem; font-weight: 500;
-    padding: 11px 20px; border-radius: 9px;
-    transition: all 0.18s ease; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.9rem; font-weight: 500; padding: 11px 20px; border-radius: 9px;
+    transition: all 0.18s ease; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
   }
   .btn-primary { background: var(--accent); color: #04100D; font-weight: 600; }
   .btn-primary:hover { background: var(--accent-bright); transform: translateY(-1px); }
@@ -120,203 +91,191 @@
   .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 
   /* ── SECTION SHELL ── */
-  section { padding: 80px 0; border-top: 1px solid var(--border); }
+  section { padding: 76px 0; border-top: 1px solid var(--border); }
   .eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
   }
   h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-    font-weight: 600; letter-spacing: -0.6px;
-    color: var(--text); margin-bottom: 16px;
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+    font-weight: 600; letter-spacing: -0.5px; margin-bottom: 14px;
   }
-  .section-intro {
-    color: var(--text-muted); max-width: 620px;
-    font-size: 1rem; margin-bottom: 44px;
-  }
+  .section-intro { color: var(--text-muted); max-width: 600px; font-size: 0.98rem; margin-bottom: 40px; }
 
-  /* ── ARCHITECTURE DIAGRAM ── */
-  .arch {
-    display: grid; grid-template-columns: 1fr 320px; gap: 28px;
-    align-items: start;
-  }
-  @media (max-width: 800px) { .arch { grid-template-columns: 1fr; } }
+  /* ── ABOUT ── */
+  .about-body { color: var(--text-muted); max-width: 660px; font-size: 1rem; }
+  .about-body p + p { margin-top: 14px; }
+  .about-body .k { color: var(--text); font-weight: 500; }
 
-  .diagram {
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 22px;
+  .subhead {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.6px;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 18px;
+    display: flex; align-items: center; gap: 9px;
   }
+  .subhead::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .about-block + .about-block { margin-top: 52px; }
 
-  .plane-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem; letter-spacing: 0.5px;
-    color: var(--text-dim); text-transform: uppercase;
-    margin-bottom: 12px; display: flex; align-items: center; gap: 7px;
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+  .skill-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px;
   }
-  .plane-label.public { color: var(--accent); }
+  .skill-card .sc-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;
+  }
+  .skill-card .sc-list { list-style: none; }
+  .skill-card .sc-list li {
+    color: var(--text-muted); font-size: 0.89rem; line-height: 1.5;
+    padding: 6px 0 6px 16px; position: relative;
+    border-top: 1px solid var(--border);
+  }
+  .skill-card .sc-list li:first-child { border-top: none; padding-top: 2px; }
+  .skill-card .sc-list li::before {
+    content: ''; position: absolute; left: 0; top: 15px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+  }
+  .skill-card .sc-list li:first-child::before { top: 9px; }
 
-  .spine { display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .node {
-    width: 100%; max-width: 340px;
-    background: var(--surface);
-    border: 1px solid var(--border-strong);
-    border-radius: 10px;
-    padding: 12px 15px;
-    cursor: pointer;
-    transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
-    text-align: center;
-  }
-  .node:hover, .node:focus-visible {
-    border-color: var(--accent);
-    background: var(--surface-2);
-    outline: none;
-    transform: translateY(-1px);
-  }
-  .node.active { border-color: var(--accent); background: var(--accent-dim); }
-  .node .n-name { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text); }
-  .node .n-sub { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
-  .node.public-node { border-color: var(--accent-line); }
-  .node.public-node .n-name { color: var(--accent-bright); }
+  .explore-body { color: var(--text-muted); font-size: 0.97rem; max-width: 660px; }
+  .explore-body p + p { margin-top: 12px; }
+  .explore-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 
-  .connector {
-    width: 2px; height: 26px;
-    background: linear-gradient(var(--accent-line), var(--border-strong));
-    position: relative; overflow: hidden;
-  }
-  .connector.flow::after {
-    content: ''; position: absolute; left: -1px; width: 4px; height: 8px;
-    background: var(--accent-bright); border-radius: 4px;
-    filter: blur(0.5px);
-    animation: flowDown 2.4s linear infinite;
-  }
-  @keyframes flowDown { from { top: -8px; } to { top: 28px; } }
-
-  .connector.plain { background: var(--border-strong); }
-
-  /* private plane */
-  .private-plane {
-    margin-top: 8px; width: 100%;
-    border: 1px dashed var(--border-strong);
-    border-radius: 12px; padding: 16px 14px 6px;
-    position: relative;
-  }
-  .private-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
-  }
-  @media (max-width: 460px) { .private-grid { grid-template-columns: 1fr; } }
-  .chip {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 9px 12px; cursor: pointer;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.76rem;
-    color: var(--text-muted); text-align: center;
-    transition: all 0.15s ease;
-  }
-  .chip:hover, .chip:focus-visible {
-    border-color: var(--accent); color: var(--text); outline: none;
-    background: var(--surface-2);
-  }
-  .chip.active { border-color: var(--accent); color: var(--accent-bright); background: var(--accent-dim); }
-  .chip-group-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem;
-    color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;
-    margin: 12px 0 8px;
-  }
-
-  /* detail panel */
-  .detail {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 22px; position: sticky; top: 84px;
-    min-height: 180px;
-  }
-  .detail .d-tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-    color: var(--accent); text-transform: uppercase; letter-spacing: 0.6px;
-    margin-bottom: 10px;
-  }
-  .detail .d-name {
-    font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem;
-    font-weight: 600; color: var(--text); margin-bottom: 10px;
-  }
-  .detail .d-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-  .detail .d-hint { font-size: 0.8rem; color: var(--text-dim); font-style: italic; }
-
-  /* ── DECISION CARDS ── */
-  .decisions { display: grid; gap: 16px; }
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 26px 28px;
-    transition: border-color 0.18s ease;
-  }
-  .card:hover { border-color: var(--border-strong); }
-  .card h3 {
-    font-family: 'Space Grotesk', sans-serif; font-size: 1.12rem;
-    font-weight: 600; color: var(--text); margin-bottom: 10px;
-    display: flex; align-items: baseline; gap: 11px;
-  }
-  .card h3 .idx {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
-    color: var(--accent); font-weight: 500;
-  }
-  .card p { font-size: 0.94rem; color: var(--text-muted); }
-  .card p + p { margin-top: 10px; }
-  .card .k { color: var(--text); font-weight: 500; }
-
-  /* ── STACK STRIP ── */
-  .stack-list {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
+  /* ── TAG CHIP ── */
   .tag {
     font-family: 'JetBrains Mono', monospace; font-size: 0.76rem;
     background: var(--surface); border: 1px solid var(--border);
     color: var(--text-muted); padding: 6px 12px; border-radius: 7px;
   }
 
-  /* ── LIMITATIONS ── */
-  .honest {
-    background: var(--bg-2); border: 1px solid var(--border);
-    border-left: 2px solid var(--accent); border-radius: var(--radius);
-    padding: 26px 30px;
+  /* ── PROJECTS ── */
+  .featured-tag {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    color: var(--accent-bright); background: var(--accent-dim);
+    border: 1px solid var(--accent-line); padding: 5px 12px; border-radius: 100px;
+    margin-bottom: 18px;
   }
-  .honest p { color: var(--text-muted); font-size: 0.95rem; }
-  .honest p + p { margin-top: 12px; }
-  .honest .k { color: var(--text); font-weight: 500; }
+  .proj-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; font-weight: 600; letter-spacing: -0.6px; margin-bottom: 12px; }
+  .proj-lede { color: var(--text-muted); max-width: 640px; font-size: 1rem; margin-bottom: 40px; }
 
-  /* ── EARLIER WORK ── */
-  .earlier {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 26px 28px;
+  .mini-block { margin-bottom: 22px; }
+  .mini-block .eyebrow { margin-bottom: 10px; }
+  .mini-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; letter-spacing: -0.4px; margin-bottom: 10px; }
+  .mini-desc { color: var(--text-muted); max-width: 640px; font-size: 0.94rem; }
+
+  /* ── ARCHITECTURE DIAGRAM ── */
+  .arch { display: grid; grid-template-columns: 1fr 320px; gap: 28px; align-items: start; margin-bottom: 56px; }
+  @media (max-width: 800px) { .arch { grid-template-columns: 1fr; } }
+  .diagram { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 22px; }
+  .plane-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px;
+    color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 7px;
   }
-  .earlier .e-top {
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 12px; flex-wrap: wrap; margin-bottom: 12px;
+  .plane-label.public { color: var(--accent); }
+  .spine { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .node {
+    width: 100%; max-width: 340px; background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: 10px; padding: 12px 15px; cursor: pointer;
+    transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease; text-align: center;
   }
-  .earlier h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; }
-  .earlier .e-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-dim); }
-  .earlier p { color: var(--text-muted); font-size: 0.93rem; }
+  .node:hover, .node:focus-visible { border-color: var(--accent); background: var(--surface-2); outline: none; transform: translateY(-1px); }
+  .node.active { border-color: var(--accent); background: var(--accent-dim); }
+  .node .n-name { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text); }
+  .node .n-sub { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
+  .node.public-node { border-color: var(--accent-line); }
+  .node.public-node .n-name { color: var(--accent-bright); }
+  .connector { width: 2px; height: 26px; background: linear-gradient(var(--accent-line), var(--border-strong)); position: relative; overflow: hidden; }
+  .connector.flow::after {
+    content: ''; position: absolute; left: -1px; width: 4px; height: 8px;
+    background: var(--accent-bright); border-radius: 4px; filter: blur(0.5px);
+    animation: flowDown 2.4s linear infinite;
+  }
+  @keyframes flowDown { from { top: -8px; } to { top: 28px; } }
+  .private-plane { margin-top: 8px; width: 100%; border: 1px dashed var(--border-strong); border-radius: 12px; padding: 16px 14px 6px; }
+  .private-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  @media (max-width: 460px) { .private-grid { grid-template-columns: 1fr; } }
+  .chip {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 9px 12px; cursor: pointer; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem; color: var(--text-muted); text-align: center; transition: all 0.15s ease;
+  }
+  .chip:hover, .chip:focus-visible { border-color: var(--accent); color: var(--text); outline: none; background: var(--surface-2); }
+  .chip.active { border-color: var(--accent); color: var(--accent-bright); background: var(--accent-dim); }
+  .chip-group-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.5px; margin: 12px 0 8px;
+  }
+  .detail {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px; position: sticky; top: 84px; min-height: 180px;
+  }
+  .detail .d-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+  .detail .d-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+  .detail .d-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .detail .d-hint { font-size: 0.8rem; color: var(--text-dim); font-style: italic; }
+
+  /* ── DECISION CARDS ── */
+  .decisions { display: grid; gap: 16px; margin-bottom: 56px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 28px; transition: border-color 0.18s ease; }
+  .card:hover { border-color: var(--border-strong); }
+  .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.08rem; font-weight: 600; margin-bottom: 10px; display: flex; align-items: baseline; gap: 11px; }
+  .card h3 .idx { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--accent); font-weight: 500; }
+  .card p { font-size: 0.93rem; color: var(--text-muted); }
+  .card p + p { margin-top: 10px; }
+  .card .k { color: var(--text); font-weight: 500; }
+
+  .stack-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 56px; }
+
+  .honest {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 2px solid var(--accent);
+    border-radius: var(--radius); padding: 24px 28px;
+  }
+  .honest p { color: var(--text-muted); font-size: 0.93rem; }
+  .honest p + p { margin-top: 11px; }
+  .honest .k { color: var(--text); font-weight: 500; }
+  .honest .h-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+
+  /* ── OTHER PROJECTS ── */
+  .other-projects-head { margin-top: 64px; margin-bottom: 24px; }
+  .op-grid { display: grid; gap: 16px; }
+  .op-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 26px; transition: border-color 0.18s ease; }
+  .op-card:hover { border-color: var(--border-strong); }
+  .op-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .op-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; }
+  .op-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); }
+  .op-card p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 14px; }
+  .op-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .op-tags .tag { font-size: 0.72rem; padding: 4px 10px; }
+
+  .op-placeholder {
+    border: 1px dashed var(--border-strong); border-radius: var(--radius);
+    padding: 30px 26px; text-align: center; color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+
+  /* ── WRITING ── */
+  .writing-empty {
+    border: 1px dashed var(--border-strong); border-radius: var(--radius);
+    padding: 48px 32px; text-align: center;
+  }
+  .writing-empty .w-icon { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 1.4rem; margin-bottom: 14px; }
+  .writing-empty p { color: var(--text-muted); max-width: 460px; margin: 0 auto; font-size: 0.94rem; }
 
   /* ── CONTACT ── */
   .contact-grid { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
   .contact-card {
-    flex: 1; min-width: 200px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 20px 22px;
-    transition: border-color 0.18s ease, transform 0.18s ease;
+    flex: 1; min-width: 190px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 22px; transition: border-color 0.18s ease, transform 0.18s ease;
   }
   .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .contact-card .c-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 6px; }
-  .contact-card .c-val { color: var(--text); font-size: 0.95rem; font-weight: 500; }
+  .contact-card .c-val { color: var(--text); font-size: 0.94rem; font-weight: 500; }
 
-  footer {
-    border-top: 1px solid var(--border); padding: 34px 0;
-    text-align: center;
-  }
+  footer { border-top: 1px solid var(--border); padding: 34px 0; text-align: center; }
   footer .f-line { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-dim); }
 
-  /* ── SCROLL REVEAL ── */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
@@ -332,35 +291,114 @@
   <div class="wrap">
     <span class="brand">ragul<span class="dot">.</span>cloud</span>
     <div class="nav-links">
-      <a href="#homelab">Homelab</a>
-      <a href="#decisions">Decisions</a>
-      <a href="#earlier">Earlier work</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
+<!-- ── HERO ── -->
 <header>
   <div class="wrap">
-    <span class="status-line mono">
-      <span class="status-dot"></span>
-      self-hosted on a raspberry pi&nbsp;·&nbsp;13 services&nbsp;·&nbsp;monitored&nbsp;·&nbsp;managed as code
-    </span>
-    <h1>I run a small production-grade homelab to understand how infrastructure is really <span class="hl">built, secured, and operated</span>.</h1>
-    <p class="lede">I'm an aspiring Cloud &amp; DevOps engineer. Rather than collecting certificates, I learn by running a real system end to end — from a bare OS to a monitored, automated, publicly reachable service — and making sure I can explain every layer.</p>
+    <h1>Hi, I'm Ragul — <span class="hl">Aspiring Cloud &amp; DevOps Engineer</span></h1>
+    <p class="lede">I enjoy learning Linux, cloud technologies, automation, and infrastructure by building real projects and continuously exploring how modern systems work.</p>
     <div class="hero-actions">
-      <a href="#homelab" class="btn btn-primary">Explore the homelab →</a>
+      <a href="#projects" class="btn btn-primary">See what I've built →</a>
       <a href="https://github.com/ragull-11" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      <a href="https://linkedin.com/in/ragul11" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Resume</a>
     </div>
   </div>
 </header>
 
-<!-- ── HOMELAB ── -->
-<section id="homelab">
+<!-- ── ABOUT ── -->
+<section id="about">
   <div class="wrap">
-    <div class="eyebrow reveal">The centerpiece</div>
-    <h2 class="reveal">A homelab, not a tech list</h2>
-    <p class="section-intro reveal">Everything here runs on a single Raspberry Pi 4 (4&nbsp;GB, Ubuntu Server). The interesting part isn't the services themselves — it's how they're arranged. One thing is public. Everything else is private. Tap any box to see what it does and why it's where it is.</p>
+    <div class="eyebrow reveal">About</div>
+    <h2 class="reveal">A bit about me</h2>
+
+    <div class="about-block reveal">
+      <div class="subhead">Summary</div>
+      <div class="about-body">
+        <p>I'm an aspiring Cloud &amp; DevOps engineer, passionate about Linux, cloud technologies, and infrastructure. Most of what I know comes from hands-on projects, structured learning, and independent exploration — setting up a real system, hitting a real problem, and working through it rather than just reading about it.</p>
+      </div>
+    </div>
+
+    <div class="about-block reveal">
+      <div class="subhead">Current skill set</div>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <div class="sc-label">Systems &amp; Linux</div>
+          <ul class="sc-list">
+            <li>Linux administration</li>
+            <li>Bash scripting</li>
+            <li>SSH hardening &amp; UFW firewalls</li>
+            <li>systemd services &amp; timers</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="sc-label">Containers &amp; Networking</div>
+          <ul class="sc-list">
+            <li>Docker &amp; Docker Compose</li>
+            <li>Reverse proxies (Caddy)</li>
+            <li>WireGuard VPN (Tailscale)</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="sc-label">Cloud &amp; IaC</div>
+          <ul class="sc-list">
+            <li>AWS (EC2, S3, IAM, CloudFront)</li>
+            <li>Terraform</li>
+            <li>Ansible</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="sc-label">Observability</div>
+          <ul class="sc-list">
+            <li>Prometheus &amp; Grafana</li>
+            <li>Loki (log aggregation)</li>
+            <li>Alertmanager</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="sc-label">CI/CD &amp; Version Control</div>
+          <ul class="sc-list">
+            <li>Git &amp; GitHub Actions</li>
+            <li>Jenkins</li>
+            <li>Self-hosted Git (Gitea)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-block reveal">
+      <div class="subhead">Independent exploration</div>
+      <div class="explore-body">
+        <p>Outside of traditional infrastructure, I've spent a good amount of time exploring blockchain ecosystems on my own — DeFi platforms, NFT marketplaces, and decentralized applications. That meant hands-on wallet management, handling real blockchain transactions, and getting comfortable with how decentralized workflows actually operate day to day.</p>
+        <p>None of it was professional work, and I don't frame it that way — but it was genuinely self-driven learning, and it broadened how I think about distributed systems, trust, and infrastructure beyond the traditional cloud model.</p>
+        <div class="explore-tags">
+          <span class="tag">DeFi platforms</span>
+          <span class="tag">NFT marketplaces</span>
+          <span class="tag">dApps</span>
+          <span class="tag">Wallet management</span>
+          <span class="tag">Decentralized workflows</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Projects</div>
+
+    <!-- FEATURED -->
+    <div class="reveal">
+      <h3 class="proj-title">Self-Hosted Infrastructure</h3>
+      <p class="proj-lede">A small, monitored, self-hosted server running on a Raspberry Pi 4 — networking, security, observability, automation, and backups, built and operated end to end. The site you're reading is served from it. Tap any box in the diagram to see what it does and why it's placed there.</p>
+    </div>
 
     <div class="arch reveal">
       <div class="diagram">
@@ -396,7 +434,7 @@
           <div class="plane-label">🔒 private — reachable only over a wireguard vpn</div>
           <div class="node" tabindex="0" data-key="tailscale" style="margin: 0 auto 12px;">
             <div class="n-name">Tailscale</div>
-            <div class="n-sub">mesh VPN · laptop &amp; phone only</div>
+            <div class="n-sub">mesh VPN · my devices only</div>
           </div>
 
           <div class="chip-group-label">core services</div>
@@ -422,99 +460,90 @@
       <div class="detail" id="detail" aria-live="polite">
         <div class="d-tag" id="d-tag">start here</div>
         <div class="d-name" id="d-name">The whole idea in one line</div>
-        <div class="d-body" id="d-body">Only my website is exposed to the internet, through an outbound tunnel that never opens a port on my home router. Every other service is private, reachable only over an encrypted VPN. <span class="d-hint">Tap any box in the diagram to see the details.</span></div>
+        <div class="d-body" id="d-body">Only my website is exposed to the internet, through an outbound tunnel that never opens a port on my home router. Every other service is private, reachable only over an encrypted VPN. <span class="d-hint">Tap any box to see the details.</span></div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ── DECISIONS ── -->
-<section id="decisions">
-  <div class="wrap">
-    <div class="eyebrow reveal">Why it's built this way</div>
-    <h2 class="reveal">The decisions behind it</h2>
-    <p class="section-intro reveal">Anyone can run a container. What I wanted to learn was the reasoning — the tradeoffs you only meet when you actually operate something.</p>
+    <div class="mini-block reveal">
+      <div class="eyebrow">Why it's built this way</div>
+      <h4 class="mini-title">The decisions behind it</h4>
+      <p class="mini-desc">This project wasn't just about getting services running—it was about understanding the reasoning behind each architectural decision. Every technology was chosen to solve a specific problem, and this section explains the trade-offs that influenced those choices.</p>
+    </div>
 
-    <div class="decisions">
-      <div class="card reveal">
+    <div class="decisions reveal">
+      <div class="card">
         <h3><span class="idx">01</span> One service public, everything else private</h3>
         <p>Exposing a home server usually means forwarding a router port — which reveals your home IP and often can't work at all behind the carrier-grade NAT most Indian ISPs use. Instead, a <span class="k">Cloudflare Tunnel</span> makes an outbound connection from the Pi, so nothing is ever opened inward.</p>
         <p>The public path serves exactly one hostname; anything else is refused. Gitea, the password manager, and every dashboard stay reachable only over a <span class="k">WireGuard mesh VPN</span> — so I can reach them from anywhere without any of them touching the public internet.</p>
       </div>
 
-      <div class="card reveal">
+      <div class="card">
         <h3><span class="idx">02</span> Monitored, not just running</h3>
         <p><span class="k">Prometheus</span> scrapes the host and every container every 30 seconds; <span class="k">Loki</span> collects their logs so I can search logs and metrics together in <span class="k">Grafana</span>. The part I found most valuable wasn't collecting data — it was deciding what "unhealthy" means.</p>
-        <p>I wrote a handful of alert rules as code — service down, low disk, memory pressure, high CPU temperature — and wired <span class="k">Alertmanager</span> to my phone. Stopping a container now sends a Telegram alert within two minutes, and a recovery notice when it comes back.</p>
+        <p>I wrote a handful of alert rules as code — service down, low disk, memory pressure, high CPU temperature — and wired <span class="k">Alertmanager</span> to my phone. Stopping a container sends a Telegram alert within two minutes, and a recovery notice when it comes back.</p>
       </div>
 
-      <div class="card reveal">
+      <div class="card">
         <h3><span class="idx">03</span> Reproducible from a bare OS</h3>
         <p>Every config lives in Git from the first commit. An <span class="k">Ansible</span> playbook takes a fresh Ubuntu install to the full running stack in one command — I've actually wiped the Pi and rebuilt it this way, which is what made me trust it.</p>
         <p>A <span class="k">GitHub Actions</span> pipeline validates every Compose file and lints the YAML on each push, so a broken config is caught before it ever reaches the Pi.</p>
       </div>
 
-      <div class="card reveal">
+      <div class="card">
         <h3><span class="idx">04</span> Backups I've actually restored</h3>
         <p>The data that can't be recovered from Git — Git repositories, the password vault, dashboards, tunnel credentials — is backed up nightly with <span class="k">restic</span> on a systemd timer, encrypted and deduplicated.</p>
         <p>A backup you've never restored is only a hope. I ran the restore into a scratch directory and confirmed the files came back readable, and wrote a recovery runbook alongside it.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ── STACK ── -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow reveal">The stack</div>
-    <h2 class="reveal">Tools I've used here, in context</h2>
-    <p class="section-intro reveal">Not a checklist — every one of these is doing a job in the system above, and I can explain the job.</p>
-    <div class="stack-list reveal">
-      <span class="tag">Linux</span>
-      <span class="tag">Docker</span>
-      <span class="tag">Docker Compose</span>
-      <span class="tag">Caddy</span>
-      <span class="tag">Tailscale · WireGuard</span>
-      <span class="tag">Cloudflare Tunnel</span>
-      <span class="tag">Prometheus</span>
-      <span class="tag">Grafana</span>
-      <span class="tag">Loki</span>
-      <span class="tag">Alertmanager</span>
-      <span class="tag">Ansible</span>
-      <span class="tag">GitHub Actions</span>
-      <span class="tag">restic</span>
-      <span class="tag">Gitea</span>
-      <span class="tag">Git</span>
-      <span class="tag">systemd</span>
-      <span class="tag">UFW</span>
-    </div>
-  </div>
-</section>
-
-<!-- ── HONEST / LIMITATIONS ── -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow reveal">Being straight about it</div>
-    <h2 class="reveal">What I'd change if I rebuilt it</h2>
-    <div class="honest reveal">
-      <p>It runs on a <span class="k">single node</span>, so the Pi itself is a single point of failure. Backups are automated and tested, but there's no live redundancy — if the hardware dies, there's a rebuild-and-restore gap.</p>
-      <p>I looked at moving a workload onto <span class="k">Kubernetes (K3s)</span> for the experience, measured its real cost — the control plane alone used over a gigabyte of RAM on a 4&nbsp;GB board — and decided against keeping it, because nothing in the homelab yet needs orchestration. I'd rather add it when there's a genuine reason than run it for the keyword.</p>
-      <p>Next, I'd add a second node for redundancy and move backups fully off-site. I mention all of this because knowing a system's limits is part of understanding it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── EARLIER WORK ── -->
-<section id="earlier">
-  <div class="wrap">
-    <div class="eyebrow reveal">Before the homelab</div>
-    <h2 class="reveal">Earlier work</h2>
-    <div class="earlier reveal">
-      <div class="e-top">
-        <h3>Containerized app deployment &amp; CI/CD</h3>
-        <span class="e-meta">GUVI DevOps program · 2024</span>
+    <div class="reveal">
+      <div class="subhead">Stack</div>
+      <div class="stack-list">
+        <span class="tag">Linux</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Docker Compose</span>
+        <span class="tag">Caddy</span>
+        <span class="tag">Tailscale · WireGuard</span>
+        <span class="tag">Cloudflare Tunnel</span>
+        <span class="tag">Prometheus</span>
+        <span class="tag">Grafana</span>
+        <span class="tag">Loki</span>
+        <span class="tag">Alertmanager</span>
+        <span class="tag">Ansible</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">restic</span>
+        <span class="tag">Gitea</span>
+        <span class="tag">systemd</span>
+        <span class="tag">UFW</span>
       </div>
-      <p>A guided course project where I first worked with containers and pipelines end to end — containerizing a React application, deploying it to an AWS EC2 instance with Docker, and automating builds through a Jenkins and GitHub pipeline, with Prometheus watching the deployment. It's where the ideas started; the homelab is where I took them further on my own and made sure I understood them.</p>
+    </div>
+
+    <div class="honest reveal">
+      <div class="h-title">What I'd change if I rebuilt it</div>
+      <p>It runs on a <span class="k">single node</span>, so the Pi itself is a single point of failure. Backups are automated and tested, but there's no live redundancy — if the hardware dies, there's a rebuild-and-restore gap.</p>
+      <p>I looked at moving a workload onto <span class="k">Kubernetes (K3s)</span> for the experience, measured its real cost — the control plane alone used over a gigabyte of RAM on a 4&nbsp;GB board — and decided against keeping it, because nothing here needs orchestration yet. I'd rather add it when there's a genuine reason than run it for the keyword.</p>
+      <p>Next, I'd add a second node for redundancy and move backups fully off-site. Knowing a system's limits is part of understanding it.</p>
+    </div>
+
+    <!-- OTHER PROJECTS -->
+    <div class="other-projects-head reveal">
+      <div class="subhead">Other projects</div>
+    </div>
+    <div class="op-grid reveal">
+      <div class="op-card">
+        <div class="op-top">
+          <h3>Application Deployment &amp; Automation</h3>
+          <span class="op-meta">GUVI DevOps program · 2024</span>
+        </div>
+        <p>Containerized a React application and deployed it to an AWS EC2 instance with Docker, then built a CI/CD pipeline using Jenkins and GitHub for automated builds and deployments, with Prometheus monitoring the deployment. My first hands-on pass at the full path from code to a running, watched service — the ideas I later took much further in the self-hosted project above.</p>
+        <div class="op-tags">
+          <span class="tag">Docker</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">AWS EC2</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Prometheus</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -522,9 +551,8 @@
 <!-- ── CONTACT ── -->
 <section id="contact">
   <div class="wrap">
-    <div class="eyebrow reveal">Get in touch</div>
-    <h2 class="reveal">Open to entry-level infrastructure roles</h2>
-    <p class="section-intro reveal">Cloud / DevOps trainee, associate DevOps, junior Linux or systems administration, cloud operations. If you're hiring for a role where someone learns fast by building, I'd like to talk.</p>
+    <div class="eyebrow reveal">Contact</div>
+    <h2 class="reveal">Let's connect</h2>
     <div class="contact-grid reveal">
       <a class="contact-card" href="mailto:ragulll112002@gmail.com">
         <div class="c-label">email</div>
@@ -538,6 +566,10 @@
         <div class="c-label">linkedin</div>
         <div class="c-val">linkedin.com/in/ragul11</div>
       </a>
+      <a class="contact-card" href="/resume.pdf" target="_blank" rel="noopener">
+        <div class="c-label">resume</div>
+        <div class="c-val">View Online</div>
+      </a>
     </div>
   </div>
 </section>
@@ -549,16 +581,15 @@
 </footer>
 
 <script>
-  // ── node detail data ──
   const DATA = {
     internet:   ["public", "The public internet", "Anyone visiting ragul.cloud enters here. It's the only way in — and it leads to exactly one thing. Nothing else on my network can be reached from outside."],
     cloudflare: ["public · TLS", "Cloudflare edge", "Terminates HTTPS and serves the site from Cloudflare's global network. My home IP address is never revealed to visitors."],
     tunnel:     ["public · tunnel", "cloudflared", "An outbound-only tunnel from the Pi up to Cloudflare. No inbound ports are opened on my router — which also means it works behind CGNAT, where port forwarding simply can't."],
     caddy:      ["proxy", "Caddy", "The single front door running on the Pi. It serves the public site, and internally it's the reverse proxy that fronts every other service on one clean entry point."],
-    site:       ["public", "ragul.cloud", "The static site you're reading now, served by Caddy from the Pi. This is the one and only service exposed to the internet."],
-    tailscale:  ["private · VPN", "Tailscale (WireGuard)", "Every private service is reachable only across an encrypted mesh VPN — from my laptop or phone, anywhere in the world, with none of them exposed publicly."],
+    site:       ["public", "ragul.cloud", "The site you're reading now, served by Caddy from the Pi. This is the one and only service exposed to the internet."],
+    tailscale:  ["private · VPN", "Tailscale (WireGuard)", "Every private service is reachable only across an encrypted mesh VPN — from my own devices, anywhere in the world, with none of them exposed publicly."],
     adguard:    ["private", "AdGuard Home", "Network-wide DNS filtering. Every device at home resolves through it, blocking ads and trackers before they load."],
-    gitea:      ["private", "Gitea", "A self-hosted Git server. The homelab's own configuration lives here and is mirrored out to GitHub."],
+    gitea:      ["private", "Gitea", "A self-hosted Git server. This project's own configuration lives here and is mirrored out to GitHub."],
     vaultwarden:["private", "Vaultwarden", "A self-hosted, Bitwarden-compatible password manager — my credentials, on my own hardware."],
     homepage:   ["private", "Homepage", "A single dashboard that links every service in one place."],
     prometheus: ["observability", "Prometheus", "Scrapes metrics from the host and every container every 30 seconds using a pull model, and evaluates my alert rules against them."],
@@ -593,12 +624,11 @@
     });
   });
 
-  // ── scroll reveal ──
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
