@@ -10,7 +10,7 @@
         icon: gitea.png
 
     - Vaultwarden:
-        href: http://100.126.235.13:3002
+        href: https://homelab.tail584afa.ts.net
         description: Password manager
         icon: vaultwarden.png
 
