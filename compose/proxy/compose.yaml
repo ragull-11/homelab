@@ -7,7 +7,6 @@ services:
       - homelab
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ../../site:/srv/site
