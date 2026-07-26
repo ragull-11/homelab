@@ -50,10 +50,42 @@
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
   .brand { font-family: 'JetBrains Mono', monospace; font-size: 0.92rem; font-weight: 500; letter-spacing: -0.2px; }
   .brand .dot { color: var(--accent); }
-  .nav-links { display: flex; gap: 26px; }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
   .nav-links a { font-size: 0.86rem; color: var(--text-muted); transition: color 0.18s ease; }
   .nav-links a:hover { color: var(--text); }
   @media (max-width: 700px) { .nav-links { display: none; } }
+
+  .nav-dropdown { position: relative; display: flex; align-items: center; }
+  .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+  .nav-dropdown-trigger .caret { font-size: 0.65rem; transition: transform 0.18s ease; color: var(--text-dim); }
+  .nav-dropdown:hover .nav-dropdown-trigger .caret,
+  .nav-dropdown:focus-within .nav-dropdown-trigger .caret { transform: rotate(180deg); }
+  /* Outer hit-area: starts flush against the trigger (no gap), so hover never breaks
+     while moving the pointer down toward the menu. The visual gap is added via padding
+     on this element, not margin, so it's still part of the hoverable box. */
+  .nav-dropdown-menu {
+    position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    padding-top: 14px;
+    min-width: 240px;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.16s ease, visibility 0.16s;
+    pointer-events: none;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1; visibility: visible; pointer-events: auto;
+  }
+  .nav-dropdown-menu-inner {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 6px; box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+  .nav-dropdown-menu a {
+    display: block; padding: 9px 12px; border-radius: 7px;
+    font-size: 0.82rem; color: var(--text-muted); white-space: nowrap;
+    transition: background 0.14s ease, color 0.14s ease;
+  }
+  .nav-dropdown-menu a:hover { background: var(--surface-2); color: var(--accent-bright); }
 
   /* ── HERO ── */
   header { padding: 110px 0 80px; }
@@ -239,6 +271,9 @@
 
   /* ── OTHER PROJECTS ── */
   .other-projects-head { margin-top: 64px; margin-bottom: 24px; }
+  .proj2-head { margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--border); }
+  #infra-project { scroll-margin-top: 122px; }
+  #cicd-project { scroll-margin-top: 84px; }
   .op-grid { display: grid; gap: 16px; }
   .op-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 26px; transition: border-color 0.18s ease; }
   .op-card:hover { border-color: var(--border-strong); }
@@ -248,6 +283,20 @@
   .op-card p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 14px; }
   .op-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .op-tags .tag { font-size: 0.72rem; padding: 4px 10px; }
+  .op-card code, .card code, .about-body code {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85em;
+    background: var(--bg-2); border: 1px solid var(--border);
+    padding: 1px 6px; border-radius: 4px; color: var(--accent-bright);
+  }
+  .op-highlights { list-style: none; margin: 2px 0 16px; }
+  .op-highlights li { color: var(--text-muted); font-size: 0.88rem; line-height: 1.55; padding: 4px 0 4px 15px; position: relative; }
+  .op-highlights li::before { content: ''; position: absolute; left: 0; top: 12px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+  .op-link {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-bright);
+    transition: color 0.15s ease;
+  }
+  .op-link:hover { color: var(--text); }
 
   .op-placeholder {
     border: 1px dashed var(--border-strong); border-radius: var(--radius);
@@ -292,7 +341,15 @@
     <span class="brand">ragul<span class="dot">.</span>cloud</span>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="#projects" class="nav-dropdown-trigger">Projects <span class="caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu-inner">
+            <a href="#infra-project">Self-Hosted Infrastructure</a>
+            <a href="#cicd-project">CI/CD Application Deployment</a>
+          </div>
+        </div>
+      </div>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -307,7 +364,7 @@
       <a href="#projects" class="btn btn-primary">See what I've built →</a>
       <a href="https://github.com/ragull-11" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
       <a href="https://linkedin.com/in/ragul11" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-      <a href="/resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Resume</a>
+      <a href="/Ragul_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Resume</a>
     </div>
   </div>
 </header>
@@ -395,7 +452,7 @@
     <div class="eyebrow reveal">Projects</div>
 
     <!-- FEATURED -->
-    <div class="reveal">
+    <div class="reveal" id="infra-project">
       <h3 class="proj-title">Self-Hosted Infrastructure</h3>
       <p class="proj-lede">A small, monitored, self-hosted server running on a Raspberry Pi 4 — networking, security, observability, automation, and backups, built and operated end to end. The site you're reading is served from it. Tap any box in the diagram to see what it does and why it's placed there.</p>
     </div>
@@ -525,25 +582,102 @@
       <p>Next, I'd add a second node for redundancy and move backups fully off-site. Knowing a system's limits is part of understanding it.</p>
     </div>
 
-    <!-- OTHER PROJECTS -->
-    <div class="other-projects-head reveal">
-      <div class="subhead">Other projects</div>
+    <!-- PROJECT 2: CI/CD APPLICATION DEPLOYMENT -->
+    <div class="proj2-head reveal" id="cicd-project">
+      <span class="op-meta">GUVI Geek Network</span>
+      <h3 class="proj-title">CI/CD Application Deployment</h3>
+      <p class="proj-lede">A Dockerized React app deployed through a Jenkins Multibranch Pipeline with branch-based promotion — pushes to <code>dev</code> build and push to a public Docker Hub repo, merges to <code>master</code> promote to a private one, and every build deploys automatically to an AWS EC2 instance behind a least-privilege security group. Jenkins runs on the same Raspberry Pi as the infrastructure project above — reused, not duplicated. Tap any step below to see how it works.</p>
     </div>
-    <div class="op-grid reveal">
-      <div class="op-card">
-        <div class="op-top">
-          <h3>Application Deployment &amp; Automation</h3>
-          <span class="op-meta">GUVI DevOps program · 2024</span>
+
+    <div class="arch reveal">
+      <div class="diagram">
+        <div class="plane-label">▲ the pipeline, start to finish</div>
+        <div class="spine">
+          <div class="node" tabindex="0" data-key2="github">
+            <div class="n-name">GitHub</div>
+            <div class="n-sub">dev &amp; master branches</div>
+          </div>
+          <div class="connector flow"></div>
+          <div class="node" tabindex="0" data-key2="jenkins">
+            <div class="n-name">Jenkins</div>
+            <div class="n-sub">Multibranch Pipeline · polls every 2 min</div>
+          </div>
+          <div class="connector flow"></div>
+          <div class="node" tabindex="0" data-key2="build">
+            <div class="n-name">Build</div>
+            <div class="n-sub">Docker buildx · cross-arch for amd64</div>
+          </div>
+          <div class="connector flow"></div>
         </div>
-        <p>Containerized a React application and deployed it to an AWS EC2 instance with Docker, then built a CI/CD pipeline using Jenkins and GitHub for automated builds and deployments, with Prometheus monitoring the deployment. My first hands-on pass at the full path from code to a running, watched service — the ideas I later took much further in the self-hosted project above.</p>
-        <div class="op-tags">
-          <span class="tag">Docker</span>
-          <span class="tag">Jenkins</span>
-          <span class="tag">AWS EC2</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">Prometheus</span>
+
+        <div class="private-plane">
+          <div class="plane-label">⑂ branch-based promotion</div>
+          <div class="private-grid">
+            <div class="chip" tabindex="0" data-key2="devrepo">dev → Docker Hub (public)</div>
+            <div class="chip" tabindex="0" data-key2="prodrepo">master → Docker Hub (private)</div>
+          </div>
+        </div>
+
+        <div class="spine" style="margin-top: 8px;">
+          <div class="connector flow"></div>
+          <div class="node" tabindex="0" data-key2="deploy">
+            <div class="n-name">Deploy</div>
+            <div class="n-sub">AWS EC2 · SSH redeploy</div>
+          </div>
+          <div class="connector flow"></div>
+          <div class="node" tabindex="0" data-key2="monitor">
+            <div class="n-name">Monitoring</div>
+            <div class="n-sub">Uptime Kuma + Telegram · reused from the infrastructure project</div>
+          </div>
         </div>
       </div>
+
+      <div class="detail" id="detail2" aria-live="polite">
+        <div class="d-tag" id="d-tag2">start here</div>
+        <div class="d-name" id="d-name2">The whole flow in one line</div>
+        <div class="d-body" id="d-body2">A push to <code>dev</code> or a merge to <code>master</code> ends up, a few minutes later, as a redeployed container on EC2 — with no manual step in between. <span class="d-hint">Tap any step to see the details.</span></div>
+      </div>
+    </div>
+
+    <div class="decisions reveal">
+      <div class="card">
+        <h3><span class="idx">01</span> Branch-based promotion, not branch-based scripts</h3>
+        <p>Rather than maintaining separate build logic per environment, one <span class="k">Multibranch Pipeline</span> reads which branch triggered it and behaves accordingly — <code>dev</code> pushes stay public and disposable, <code>master</code> merges are treated as a deliberate release.</p>
+        <p>Configuring it as a proper Multibranch Pipeline — rather than a single job polling one branch — was a direct improvement made during review: the correct Jenkins pattern for genuinely independent per-branch builds.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="idx">02</span> A cross-architecture build failure</h3>
+        <p>The build host is <span class="k">ARM64</span> (the Pi); the deploy target is <span class="k">amd64</span> (EC2). An image built with no platform flag pushed to Docker Hub without error but failed to run on the server at all.</p>
+        <p>Fixed with <span class="k">Docker buildx</span> and QEMU emulation, gated behind a platform flag so the normal local build path stays untouched.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="idx">03</span> Built a public webhook, then reverted it</h3>
+        <p>An early version exposed Jenkins' webhook endpoint through the infrastructure project's Cloudflare Tunnel, scoped to one path, so GitHub could trigger builds instantly instead of by polling.</p>
+        <p>It hit an unreliable edge issue that wasn't worth chasing further — adding new public surface to the <span class="k">primary infrastructure project</span> for a convenience feature on a secondary one wasn't a good trade. Reverted cleanly; the pipeline still polls every two minutes.</p>
+      </div>
+    </div>
+
+    <div class="honest reveal">
+      <div class="h-title">Skills this project sharpened</div>
+      <p><span class="k">Branch-based CI/CD design</span> — structuring one pipeline to behave differently by branch, instead of duplicating scripts per environment.</p>
+      <p><span class="k">Cross-platform container builds</span> — diagnosing and fixing an architecture mismatch between build and deploy targets.</p>
+      <p><span class="k">Infrastructure judgment under time pressure</span> — building a public-facing feature, hitting a real limitation, and choosing to cleanly roll it back rather than ship something fragile.</p>
+      <p><span class="k">Cloud access control</span> — configuring AWS Security Groups around least privilege rather than defaulting to open access.</p>
+    </div>
+
+    <div class="reveal" style="margin-top: 28px;">
+      <div class="stack-list" style="margin-bottom: 18px;">
+        <span class="tag">Docker</span>
+        <span class="tag">Jenkins</span>
+        <span class="tag">Docker Hub</span>
+        <span class="tag">AWS EC2</span>
+        <span class="tag">nginx</span>
+        <span class="tag">Multibranch Pipeline</span>
+        <span class="tag">Git</span>
+      </div>
+      <a class="op-link" href="https://github.com/ragull-11/devops-build" target="_blank" rel="noopener">View on GitHub →</a>
     </div>
   </div>
 </section>
@@ -566,7 +700,7 @@
         <div class="c-label">linkedin</div>
         <div class="c-val">linkedin.com/in/ragul11</div>
       </a>
-      <a class="contact-card" href="/resume.pdf" target="_blank" rel="noopener">
+      <a class="contact-card" href="/Ragul_Resume.pdf" target="_blank" rel="noopener">
         <div class="c-label">resume</div>
         <div class="c-val">View Online</div>
       </a>
@@ -621,6 +755,41 @@
     el.addEventListener('click', () => select(el));
     el.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(el); }
+    });
+  });
+
+  // ── PROJECT 2: pipeline diagram ──
+  const DATA2 = {
+    github:  ["source", "GitHub — dev &amp; master", "Two branches, each meaning something different: <code>dev</code> is where active work lands, <code>master</code> is only reached by a deliberate merge — that's what triggers the private, production release path."],
+    jenkins: ["ci", "Jenkins (Multibranch Pipeline)", "Auto-discovers both branches as independent sub-jobs, each with its own build history. Polls the repo every 2 minutes rather than relying on a public webhook — a deliberate choice, covered in the decisions below."],
+    build:   ["build", "Build (Docker buildx)", "Jenkins runs on the Pi's ARM64 hardware, but the deploy target is amd64. Docker buildx with QEMU emulation produces the correct architecture — this is what an earlier version of the pipeline got wrong."],
+    devrepo: ["registry · public", "dev → Docker Hub", "Every push to <code>dev</code> is tagged and pushed to a public repository — visible, low-stakes, meant to be iterated on quickly."],
+    prodrepo:["registry · private", "master → Docker Hub", "Only a merge into <code>master</code> pushes here — a private repository, reached through a deliberate promotion step, not every commit."],
+    deploy:  ["deploy", "Deploy to AWS EC2", "Jenkins SSHes into a t2.micro instance and redeploys the container with the freshly pushed image. The instance's security group allows HTTP from anywhere but restricts SSH to a single known IP."],
+    monitor: ["observability", "Monitoring (Uptime Kuma)", "A monitor in the same Uptime Kuma instance used by the infrastructure project above — reused, not duplicated — checks the deployed app and alerts over Telegram if it goes down."]
+  };
+
+  const dTag2 = document.getElementById('d-tag2');
+  const dName2 = document.getElementById('d-name2');
+  const dBody2 = document.getElementById('d-body2');
+  let activeEl2 = null;
+
+  function select2(el) {
+    const key = el.getAttribute('data-key2');
+    const d = DATA2[key];
+    if (!d) return;
+    if (activeEl2) activeEl2.classList.remove('active');
+    el.classList.add('active');
+    activeEl2 = el;
+    dTag2.textContent = d[0];
+    dName2.textContent = d[1];
+    dBody2.innerHTML = d[2];
+  }
+
+  document.querySelectorAll('[data-key2]').forEach(el => {
+    el.addEventListener('click', () => select2(el));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select2(el); }
     });
   });
 
